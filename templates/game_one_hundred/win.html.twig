@@ -1,0 +1,49 @@
+{# templates/game_one_hundred/win.html.twig #}
+{% extends 'game_one_hundred/layout.html.twig' %}
+
+{% block nav %}
+    {# {{ dump(app.request.attributes) }} #}
+    {% if app.request %}
+        <ul>
+            {# Below to get the route name as in the route definition in the controller: #}
+            {% set route_name = app.request.attributes.get('_route') %}
+
+            <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+            <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+            <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+            <li class="{% if route_name == 'game_one_hundred_win' %}active-game{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+            <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+            <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>Dice game 100 is over!</h1>
+
+    <p>Total score computer: {{ tot_score_computer }}<br>
+    {% if game_over is same as ("The computer won the dice game!") %}
+        Dice values of the last roll of the computer: {{ last_roll_computer|join(', ') }}</p>
+    {% endif %}
+
+    <p>Total score player: {{ tot_score_player }}</p>
+    <p>Winner: {{ game_over }}</p>
+
+    <p>
+        {# <a href="restart-init"> #}
+        <a class="game-button" href="{{ path('game_one_hundred_restart_init') }}">
+            <button type="button">Start from the beginning</button>
+        </a>
+    </p>
+
+    {% if game_over is same as ("The computer won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer"})) }}
+    {% elseif game_over is same as ("You won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_player, winner: "Player"})) }}
+    {% endif %}
+
+    {# {% if game_over is same as ("The computer won the dice game!") %} #}
+        {# {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer"})) }} #}
+    {# {% endif %} #}
+    {# {{ render(path('high_score_create', {score: tot_score_player, winner: "Player"})) }} #}
+{% endblock %}

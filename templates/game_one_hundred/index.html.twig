@@ -1,0 +1,16 @@
+{# templates/game_one_hundred/index.html.twig #}
+{% extends 'game_one_hundred/layout.html.twig' %}
+
+{% block content %}
+    {# <p>Username: {{ app.user.username ?? 'Anonymous user!' }}</p>
+    <p>Request method: {{ app.request.method }}</p>
+    <p>Application environment: {{ app.environment }}</p> #}
+    {# <p>Application session: {{ app.session }}</p> #}
+
+    <h2>Welcome to the landing page of Game 100!!!</h2>
+
+    <p>Push the button Play Game 100 to start playing the dice game.</p>
+    <a class="game-button" href="{{ path('game_one_hundred_init') }}">
+        <button type="button">Play Game 100</button>
+    </a>
+{% endblock %}

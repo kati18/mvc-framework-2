@@ -1,0 +1,10 @@
+{# templates/bundles/TwigBundle/Exception/layout.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block nav %}{% endblock %}
+
+{% block main %}
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

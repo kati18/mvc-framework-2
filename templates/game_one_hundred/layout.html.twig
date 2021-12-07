@@ -1,0 +1,21 @@
+{# templates/game_one_hundred/layout.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# {% block header %}
+    <h1>Game 100!</h1>
+{% endblock %} #}
+
+{# {% block nav %}
+    <ul>
+        <li><a href="{{ path('start') }}">Start</a></li>
+        <li><a href="{{ path('me') }}">Me</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+    </ul>
+{% endblock %} #}
+
+{% block main %}
+    <h2>The game 100!</h2>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

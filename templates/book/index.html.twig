@@ -1,0 +1,36 @@
+{# templates/book/index.html.twig #}
+{% extends 'book/layout.html.twig' %}
+
+{# {% block title %}Hello BookController!{% endblock %} #}
+
+{% block content %}
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
+    <h1>My top 3 books!</h1>
+    {% if books is defined %}
+        {# <p>{{ dump(books) }}</p> #}
+        <table class="books-table">
+            {# <caption>My top 3 books</caption> #}
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td><img src="{{ asset(book.image) }}" alt="Picture of book {{ book.title }}"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Sorry, there are no books to show!</p>
+        <p>Route name of controller: {{ route_name_of_controller }}</p>
+    {% endif %}
+{% endblock %}

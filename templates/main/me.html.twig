@@ -1,0 +1,17 @@
+{# templates/main/me.html.twig #}
+{% extends 'main/layout.html.twig' %}
+
+{# {% block nav %}
+    <ul>
+        <li><a href="{{ path('start') }}">Start</a></li>
+        <li><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+    </ul>
+{% endblock %} #}
+
+{% block content %}
+    {# <p>Katjas main-innehåll på me-sidan!</p> #}
+    <h1 class="heading">{{ heading }}</h1>
+    {# <p class="me">{{ me }}</p> #}
+    <h5 class="more-about-me">{{ more_about_me }}</h5>
+{% endblock %}

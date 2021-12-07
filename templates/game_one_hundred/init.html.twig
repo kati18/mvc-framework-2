@@ -1,0 +1,59 @@
+{# templates/game_one_hundred/init.html.twig #}
+{% extends 'game_one_hundred/layout.html.twig' %}
+
+{% block nav %}
+    {# {{ dump(app.request.attributes) }} #}
+    {% if app.request %}
+        <ul>
+            {# Below to get the route name as in the route definition in the controller: #}
+            {% set route_name = app.request.attributes.get('_route') %}
+
+            <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+            <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+            <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+            <li class="{% if route_name == 'game_one_hundred_init' %}active-game{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+            <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+            <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2 class="congratulation-text">Congratulations on getting to play the game 100!!!</h2>
+
+    {#<p>{{ title }}</p> #}
+    {#<p>{{ current_player }}</p>#}
+    {#<p>{{ player_res }}</p>#}
+    {#}<p>{{ computer_res }}</p>#}
+
+
+    {#{% if current_player|default(true) %}#}
+    {% if not current_player %}
+        <p>Before you can start playing against the computer we have to know who gets to start playing. <p>This is done by each player rolling a single die and the one with the highest face value starts to play the dice game.</p><p> So push the button Roll die to roll your initial die and who knows maybe it is you who starts playing... Good luck!</p>
+        <p>
+            {# <a href="init-roll"> #}
+            <a class="game-button" href="{{ path('game_one_hundred_init_roll') }}">
+                <button type="button">Roll die</button>
+            </a>
+        </p>
+    {% elseif current_player %}
+        <p>You got a {{ player_res }}:a</p>
+        <p>Computer got a {{ computer_res }}:a</p>
+        <p>{{ current_player }} start(s) to play the dice game.</p>
+            {% if current_player is same as("You") %}
+                <p>
+                    {# <a href="play"> #}
+                    <a class="game-button" href="{{ path('game_one_hundred_play') }}">
+                        <button type="button">Play</button>
+                    </a>
+                </p>
+            {% elseif current_player is same as("Computer") %}
+                <p>
+                    {#<a href="init-play-computer"> #}
+                    <a class="game-button" href="{{ path('game_one_hundred_init_play_computer') }}">
+                        <button type="button">Let the computer play</button>
+                    </a>
+                </p>
+            {% endif %}
+    {% endif %}
+{% endblock %}

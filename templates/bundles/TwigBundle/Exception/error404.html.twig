@@ -1,0 +1,56 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'bundles/TwigBundle/Exception/layout.html.twig' %}
+
+{% block nav %}
+    <p>Variable route_name_of_controller: {{ route_name_of_controller }}</p>
+{% endblock %}
+
+{% block content %}
+    {# <h1>Page not found!</h1> #}
+    {# <h2>Page localhost:8000/{{ route_parameters.invalidPath }} not found!</h2> #}
+    <h2>Page localhost:8000/{{ invalid_path }} not found!</h2>
+
+    {# Below row - the content of the variable can be seen directly in the template: #}
+    {{ dump(route_parameters) }}
+    {# {{ dump(route_parameters.invalidPath) }} #}
+    {# <p>Route parameter: {{ route_parameters.invalidPath }}</p> #}
+    {# Below row - the content of the variable can be seen directly in the template: #}
+    {# {{ dump(route_name_for_url_app) }} #}
+    <p>RouteName for app: {{ route_name_for_url_app }}</p>
+    {# Below row - the content of the variable can be seen directly in the template: #}
+    {# {{ dump(route_name_for_url_game_100) }} #}
+    <p>RouteName for game 100: {{ route_name_for_url_game_100 }}</p>
+
+    <p>
+        1. The requested page couldn't be located. Checkout for any URL
+        misspelling or <a href="{{ path(route_name_for_url_game_100) }}">return to the startpage for the game.</a>
+        {# misspelling or <a href="{{ path('game_one_hundred_index') }}">return to the startpage for the game</a>. #}
+    </p>
+
+    <p>
+        2. The requested page couldn't be located. Checkout for any URL
+        misspelling or <a href="{{ path(route_name_for_url_app) }}">return to the startpage for the app.</a>
+    </p>
+
+    {# Below to create a variable named route in the template: #}
+    {% set route_game = route_name_for_url_game_100 %}
+    <p>
+        3. The requested page couldn't be located. Checkout for any URL
+        misspelling or <a href="{{ path(route_game) }}">return to the startpage for the game.</a>
+    </p>
+
+    {% if route_name_for_url_game_100 == 'game_one_hundred_index' %}
+        <p>
+            4. The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path(route_name_for_url_game_100) }}">return to the startpage for the game.</a>
+        </p>
+    {% endif %}
+    {# alt.: #}
+    {% if route_game == 'game_one_hundred_index' %}
+        <p>
+            5. The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path(route_game) }}">return to the startpage for the game.</a>
+        </p>
+    {% endif %}
+
+{% endblock %}

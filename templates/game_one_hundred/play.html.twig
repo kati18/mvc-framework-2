@@ -1,0 +1,73 @@
+{# templates/game_one_hundred/play.html.twig #}
+{% extends 'game_one_hundred/layout.html.twig' %}
+
+{% block nav %}
+    {# {{ dump(app.request.attributes) }} #}
+    {% if app.request %}
+        <ul>
+            {# Below to get the route name as in the route definition in the controller: #}
+            {% set route_name = app.request.attributes.get('_route') %}
+
+            <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+            <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+            <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+            <li class="{% if route_name == 'game_one_hundred_play' %}active-game{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+            <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+            <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>Current standings in game 100!!!</h2>
+
+    <p>Total score computer: {{ tot_score_computer }}<br>
+    {% if last_roll_computer %}
+    Dice values of the last roll of the computer: {{ last_roll_computer|join(', ') }} </p>
+    {% endif %}
+
+
+    <p class="current-player">Player: {{ current_player }}</p>
+    <p>Total score player: {{ tot_score_player }}</p>
+    <p>Dice values: {{ dice_values|join(', ') }}</p>
+    <p>Round score: {{ round_score }}</p>
+
+    <p>
+        {# <a href="play"> #}
+        <a class="game-button" href="{{ path('game_one_hundred_play') }}">
+            <button type="button"
+            {% if round_score is same as(0) %}
+                disabled
+            {% endif %}
+            >Roll again</button>
+        </a>
+    </p>
+    <p>
+        {# <a href="save"> #}
+        <a class="game-button" href="{{ path('game_one_hundred_save') }}">
+            <button type="button"
+            {% if round_score is same as(0) %}
+                disabled
+            {% endif %}
+            >Save round score to total score</button>
+        </a>
+    </p>
+    <p>
+        {# <a href="play-computer"> #}
+        <a class="game-button" href="{{ path('game_one_hundred_play_computer') }}">
+            <button type="button"
+            {% if (round_score is same as(0) and current_player is same as("Computer")) or (round_score > 0) %}
+                disabled hidden
+            {% endif %}
+            >Next player is the computer - click here to let it roll</button>
+        </a>
+    </p>
+
+    <p>
+        {# <a href="restart-init"> #}
+        <a class="game-button" href="{{ path('game_one_hundred_restart_init') }}">
+            <button type="button">Start from the beginning</button>
+        </a>
+    </p>
+
+{% endblock %}

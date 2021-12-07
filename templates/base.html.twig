@@ -1,0 +1,72 @@
+{# tamplates/base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}My Symfony App!{% endblock %}</title>
+        {% block stylesheets %}
+            {# The asset function below is a Twig feature provided by Symfony: #}
+            {# <link rel="stylesheet" href="{{ asset('../css/base.css') }}" type="text/css"/> #}
+            <link rel="stylesheet" href="{{ asset('css/base.css') }}" type="text/css"/>
+            {# alt. below row: #}
+            {# <link rel="stylesheet" href="/css/base.css"/> #}
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}
+            <div id="wrapper">
+                <header>
+                    {% block header %}
+                    {# {% if app.debug %}
+                        <p>Application debug mode: {{ app.debug }}</p>
+                        <p>Request method: {{ app.request.method }}</p>
+                        <p>Application Environment: {{ app.environment }}</p>
+                        <p>Application Session: {{ app.session.name }}</p>
+                    {% endif %} #}
+
+                    {# {% if not app.user %} #}
+                    {# {% if app.user is not same as (null) %} #}
+                    {# {% if app.user is same as (null) %}
+                        <p>The user is not logged in!</p>
+                    {% endif %} #}
+
+                        <h1>Katja´s first Symfony app in course mvc at BTH 2021!</h1>
+                        {# {{ header }} #}
+                    {% endblock %}
+                </header>
+
+                <nav>
+                    {% block nav %}
+                        {% if app.request %}
+                            {# <p>Variable route_name_of_controller: {{ route_name_of_controller }}</p> #}
+                            <ul>
+                                {# Below to get the route name as in the route definition in the controller and save it in variable route_name: #}
+                                {% set route_name = app.request.attributes.get('_route') %}
+
+                                <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+                                <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+                                <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+                                <li class="{% if route_name == 'game_one_hundred_index' %}active{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+                                {# <li class="{% if route_name == 'book_all' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li> #}
+                                <li class="{% if (route_name == 'book_all') or (route_name == 'book_index') %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+                                <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+                            </ul>
+                        {% endif %}
+                    {% endblock %}
+                </nav>
+
+                <main>
+                    {% block main %}{% endblock %}
+                </main>
+
+                {# <footer class="copyright">
+                    Katja Tibe &copy; 2021
+                </footer> #}
+            </div> <!-- End div id="wrapper"-->
+            <footer class="copyright">
+                Katja Tibe &copy; 2021
+            </footer>
+        {% endblock %}
+    </body>
+</html>

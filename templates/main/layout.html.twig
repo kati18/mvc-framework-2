@@ -1,0 +1,16 @@
+{# templates/main/layout.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# {% block nav %}
+    <ul>
+        <li><a href="{{ path('start') }}">Start</a></li>
+        <li><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+    </ul>
+{% endblock %} #}
+
+{% block main %}
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

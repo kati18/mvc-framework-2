@@ -1,0 +1,146 @@
+/* body {
+    background-color: #0074d9;
+} */
+
+#wrapper {
+    width: 62em;
+    margin: 0 auto;
+    padding: 2em 6em 8em;
+    background-color: #0074d9;
+    color: white;
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, p, a, footer {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    /* background-color: white; */
+}
+
+/* li {
+    background-color: white;
+} */
+
+a {
+    cursor: pointer;
+    padding: 0.8em;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+    color: #0074d9;
+    padding: 0.8em;
+    background-color: white;
+}
+
+li {
+    display: inline;
+    margin-right: 1em;
+}
+
+ul .active {
+    background-color: white;
+    pointer-events: none;
+    /* padding: 0.8em; */
+}
+
+.active a {
+    text-decoration: none;
+    color: #0074d9;
+    padding: 0.8em;
+    background-color: white;
+}
+
+ul .active-game {
+    background-color: white;
+    /* padding: 0.8em; */
+}
+
+.active-game a {
+    padding: 0.8em;
+    color: #0074d9;
+    background-color: white;
+}
+
+/* #game-button {
+    cursor: default;
+} */
+
+p .game-button {
+    cursor: default;
+}
+
+.game-button button {
+    cursor: pointer;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.books-table, .high-scores-table {
+    border: 2px solid #333;
+    border-collapse: collapse;
+    background-color: white;
+    color: #333;
+}
+
+.books-table th, .books-table td, .high-scores-table th, .high-scores-table td {
+    border: 1px solid #333;
+    padding: 4px;
+}
+
+.books-table th, .high-scores-table th {
+    background-color: silver;
+}
+
+.books-table tr:nth-child(even), .high-scores-table tr:nth-child(even) {
+    background-color: #0074d9;
+    color: white;
+}
+
+/* Sticky footer by Chris Coyier, May 25, 2016
+https://css-tricks.com/snippets/css/sticky-footer/ */
+
+html,
+body {
+    height: 100%;
+}
+
+#wrapper {
+    max-width: 100%;
+    /* max-width: 90%; */
+    min-height: 100%;
+    /* margin-bottom: -60px; */
+    margin-bottom: -37px;
+
+    /* Margin-bottom above is equal to:
+    footer height(37px) +
+    footer border-top(3px) + footer border-bottom(0) +
+    footer padding-top(10px) + footer padding-bottom(10px) +
+    footer margin-top(0) + footer margin-bottom(0)
+    according to the Box modell */
+}
+
+#wrapper::after {
+    content: "";
+    display: block;
+    /* height: 60px; */
+    height: 37px;
+
+    /* Height above is the same value as on property margin-bottom on selector
+    #page-wrapper above but without "-"(minus) before */
+}
+
+footer {
+    max-width: 100%;
+    /* max-width: 90%; */
+    height: 37px;
+    color: white;
+
+    /* footer height(37px) above according to the Box modell */
+}
