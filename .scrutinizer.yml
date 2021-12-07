@@ -10,7 +10,7 @@ filter:
 #     # Some Metrics + Bug Detection/Auto-Fixes
 #     php_analyzer: true
 tools:
-    php_analyzer:
+    php_analyzer: true
         config:
             metrics_coupling:
 
