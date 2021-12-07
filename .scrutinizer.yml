@@ -6,7 +6,7 @@ filter:
     # excluded_paths: [vendor/*, test/*]
     # excluded_paths: [vendor/*, test/*, src/DataFixtures, src/Entity, src/Repository]
 
-# tools:
+tools:
     # Some Metrics + Bug Detection/Auto-Fixes
     php_analyzer: true
     php_code_sniffer: true
