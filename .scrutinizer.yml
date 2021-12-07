@@ -12,7 +12,7 @@ filter:
 tools:
     php_analyzer: true
         config:
-            metrics_coupling:
+            metrics_coupling: true
 
 build:
     nodes:
