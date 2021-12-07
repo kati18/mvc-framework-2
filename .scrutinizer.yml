@@ -6,9 +6,13 @@ filter:
     # excluded_paths: [vendor/*, test/*]
     # excluded_paths: [vendor/*, test/*, src/DataFixtures, src/Entity, src/Repository]
 
+# tools:
+#     # Some Metrics + Bug Detection/Auto-Fixes
+#     php_analyzer: true
 tools:
-    # Some Metrics + Bug Detection/Auto-Fixes
-    php_analyzer: true
+    php_analyzer:
+        config:
+            metrics_coupling:
 
 build:
     nodes:
