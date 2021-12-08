@@ -99,10 +99,15 @@ cs: phpcs
 
 lint: cs phpcpd phpmd phpstan
 
-test: lint phpunit
+test: lint phpunit metric
 
 # Below outcommented 2021-11-13:
 # test:	lint phpunit
 # 	php ./vendor/bin/phpunit
 
-metric: phploc
+# metric: phploc
+
+phpmetrics: prepare
+	[ ! -f .phpmetrics.json ] || $(PHPMETRIC) --config=.phpmetrics.json | tee build/phpmetrics
+
+metric: phploc phpmetrics

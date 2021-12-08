@@ -2,7 +2,8 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, tests/*]
+    excluded_paths: [vendor/*, tests/*, myreport.html/*]
+    # excluded_paths: [vendor/*, tests/*]
     # excluded_paths: [vendor/*, test/*]
     # excluded_paths: [vendor/*, test/*, src/DataFixtures, src/Entity, src/Repository]
 
@@ -24,8 +25,8 @@ build:
     tests:
         override:
             -
-                command: "make phpunit"
-                # command: "make test"
+                # command: "make phpunit"
+                command: "make test"
                 coverage:
                     file: "build/coverage.clover"
                     format: "php-clover"

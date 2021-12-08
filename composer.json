@@ -49,6 +49,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "pdepend/pdepend": "2.10.0",
+        "phpmetrics/phpmetrics": "^2.7",
         "phpstan/phpstan": "^1.1",
         "phpstan/phpstan-doctrine": "^1.0",
         "phpunit/phpunit": "^9.5",
