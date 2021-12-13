@@ -38,19 +38,6 @@ class GameOneHundred
         $this->totScorePlayer = $totScorePlayer;
     }
 
-    // /**
-    //  * Constructor for initiating an object of the class GameOneHundred.
-    //  * @param string|null $currentPlayer, defaults to null if no argument is passed in
-    //  * @return void
-    //  */
-    // public function __construct(?string $currentPlayer = null)
-    // {
-    //     $this->gameRound = new GameRound($currentPlayer);
-    //     $this->totScoreComputer = 0;
-    //     $this->totScorePlayer = 0;
-    // }
-
-
     /**
     * Sets the initial currentPlayer after the initial roll of a single die
     *
@@ -89,29 +76,6 @@ class GameOneHundred
     }
 
 
-    /**
-    * Sets the current player and creates a new object of class
-    * GameRound by invoking the method createNewGameRoundGame in class
-    * GameOneHundred
-    */
-    // public function changeCurrentPlayerGame(): void
-    // {
-    //     if ($this->gameRound->getCurrentPlayer() === "You") {
-    //         $this->createNewGameRoundGame("Computer");
-    //     } else {
-    //         $this->createNewGameRoundGame("You");
-    //     }
-    // }
-
-    // public function changeCurrentPlayerGame(): void
-    // {
-    //     if ($this->gameRound->getCurrentPlayer() === "You") {
-    //         $this->createNewGameRoundGame("Computer");
-    //         return;
-    //     }
-    //     $this->createNewGameRoundGame("You");
-    // }
-
     public function changeCurrentPlayerGame(): void
     {
         $this->gameRound->getCurrentPlayer() === "You" ?
@@ -141,77 +105,6 @@ class GameOneHundred
         $this->gameRound->rollGameRound();
     }
 
-
-    // /**
-    // * Plays as the player Computer
-    // *
-    // * @return string
-    // */
-    // public function computerPlay(): string
-    // {
-    //     $max = 0;
-    //     $min = 10;
-    //     while ($max < $min) {
-    //         $this->rollGame();
-    //         $this->gameRound->setRoundScoreGameRound();
-    //         if ($this->gameRound->getRoundScoreGameRound() === 0) {
-    //             // break; -outcommented: 210511 kl.23.20
-    //             return "The computer got no points!"; // added 210511 kl.23.20
-    //         } else {
-    //             $max += $this->gameRound->getRoundScoreGameRound();
-    //             return "The computer got points!"; // added 210511 kl.23.20
-    //         }
-    //     }
-    //     // return "The computer is done playing its gameround!"; -outc. 210511 kl.23.20
-    // }
-
-    // /**
-    // * Plays as the player Computer
-    // * Refactored for unit testing purposes.
-    // *
-    // * @return string
-    // */
-    // public function computerPlay(int $maxInp = 0, int $minInp = 10): string
-    // {
-    //     $max = $maxInp;
-    //     $min = $minInp;
-    //     while ($max < $min) {
-    //         $this->rollGame();
-    //         $this->gameRound->setRoundScoreGameRound();
-    //         if ($this->gameRound->getRoundScoreGameRound() === 0) {
-    //             // break; -outcommented: 210511 kl.23.20
-    //             return "The computer got no points!"; // added 210511 kl.23.20
-    //         } else {
-    //             $max += $this->gameRound->getRoundScoreGameRound();
-    //             return "The computer got points!"; // added 210511 kl.23.20
-    //             // 210614: Above does not work!
-    //         }
-    //     }
-    //     return "The computer is done playing its gameround!";
-    // }
-
-    // /**
-    // * Plays as the player Computer
-    // * 1. Refactored because of unnecessary else clause according to phpmd.
-    // * Passes the tests but is not OK.
-    // *
-    // * @return string
-    // */
-    // public function computerPlay(int $maxInp = 0, int $minInp = 10): string
-    // {
-    //     $max = $maxInp;
-    //     $min = $minInp;
-    //     while ($max < $min) {
-    //         $this->rollGame();
-    //         $this->gameRound->setRoundScoreGameRound();
-    //         if ($this->gameRound->getRoundScoreGameRound() !== 0) {
-    //             $max += $this->gameRound->getRoundScoreGameRound();
-    //             return "The computer got points!"; // added 210511 kl.23.20
-    //         }
-    //         return "The computer got no points!"; // added 210511 kl.23.20
-    //     }
-    //     return "The computer is done playing its gameround!";
-    // }
 
     /**
     * Plays as the player Computer
@@ -278,15 +171,6 @@ class GameOneHundred
     *
     * @return void
     */
-    // public function setTotScoreGame(): void
-    // {
-    //     if ($this->gameRound->getCurrentPlayer() === "You") {
-    //         $this->totScorePlayer += $this->getRoundScoreGame();
-    //     } else {
-    //         $this->totScoreComputer += $this->getRoundScoreGame();
-    //     }
-    // }
-
     public function setTotScoreGame(): void
     {
         $this->gameRound->getCurrentPlayer() === "You" ?

@@ -11,6 +11,7 @@
     <exclude-pattern>test/config.php</exclude-pattern>
     <exclude-pattern>theme</exclude-pattern>
     <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>myreport.html</exclude-pattern> 
 
     <arg name="encoding" value="utf-8"/>
     <arg name="warning-severity" value="0"/>
